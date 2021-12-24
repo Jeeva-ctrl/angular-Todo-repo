@@ -11,4 +11,8 @@ import { ToDo } from '../../state/todo/todo.model';
 export class TodoListComponent {
   @Input() toDos: ToDo[];
   @Output() toDoChange = new EventEmitter<ToDo>();
+
+  onCompleteChange(toDo: ToDo, change: MatCheckboxChange) {
+    this.toDoChange.emit({ ...toDo, complete: change.checked });
+  }
 }

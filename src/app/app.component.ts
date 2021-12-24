@@ -25,9 +25,13 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<State>) {}
 
   ngOnInit() {
-    generateTodos().forEach((todo) => this.store.dispatch(new AddToDo(todo)));
+    generateTodos().forEach(todo => this.store.dispatch(new AddToDo(todo)));
     this.completeTodos = this.store.pipe(select(completeToDos));
     this.incompleteTodos = this.store.pipe(select(incompleteToDos));
-    console.log("d",this.incompleteTodos);
+
+  }
+  onCompleteToDo(toDo: ToDo) {
+    console.log("d",toDo);
+    this.store.dispatch(new CompleteToDo(toDo));
   }
 }

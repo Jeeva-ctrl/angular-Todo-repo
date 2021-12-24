@@ -21,12 +21,13 @@ export function toDoReducer(
       return toDoAdapter.removeAll(state);
 
     case ToDoActionTypes.CompleteToDo:
+      console.log('called ToDoActionTypes.CompleteToDo', action);
       return toDoAdapter.updateOne(
         {
           id: action.payload.id,
           changes: {
             ...action.payload,
-            complete: false,
+            complete: true,
           },
         },
         state

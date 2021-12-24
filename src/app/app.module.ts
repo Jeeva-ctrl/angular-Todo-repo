@@ -14,6 +14,7 @@ import { StateModule } from '../state/state.module';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from '../components/todo-list/todo-list.component';
 import { TodoComponent } from '../components/todo/todo.component';
+import { TodoFormComponent } from '../components/todo-form/todo-form.component';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import { TodoComponent } from '../components/todo/todo.component';
     StateModule.forRoot(),
     ReactiveFormsModule
   ],
-  declarations: [ AppComponent, TodoComponent, TodoListComponent ],
+  declarations: [ AppComponent, TodoComponent, TodoListComponent ,TodoFormComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
