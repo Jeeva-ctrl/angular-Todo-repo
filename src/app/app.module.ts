@@ -3,20 +3,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatListModule
-} from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatListModule} from '@angular/material/list';
+
 import { StateModule } from '../state/state.module';
 import { AppComponent } from './app.component';
+import { TodoListComponent } from '../components/todo-list/todo-list.component';
+import { TodoComponent } from '../components/todo/todo.component';
 
 
 @NgModule({
-  imports: [ BrowserModule,
+  imports: [ 
+    BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
@@ -27,8 +29,9 @@ import { AppComponent } from './app.component';
     MatFormFieldModule,
     MatListModule,
     StateModule.forRoot(),
-    ReactiveFormsModule],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
+    ReactiveFormsModule
+  ],
+  declarations: [ AppComponent, TodoComponent, TodoListComponent ],
+  bootstrap:    [ AppComponent ]
 })
-export class AppModule {}
+export class AppModule { }

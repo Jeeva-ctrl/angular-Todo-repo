@@ -1,9 +1,25 @@
 <div fxLayout="column" fxLayoutAlign="start stretch" class="cards">
-    <div fxLayout="row" fxLayoutAlign="center">
-       <div fxFlex="90%" fxFlex.md="66.667%" gxFlex.gt-md="50%">
-           <mat-card></mat-card>
-           <mat-card></mat-card>
-           <mat-card></mat-card>
-       </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="90%" fxFlex.md="66.667%" gxFlex.gt-md="50%">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><h2>To Do List</h2></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ng-container *ngIf="incompleteTodos | async; let toDos">
+            <ng-container *ngIf="toDos.length > 0; else allDone">
+              <app-todo-list [toDos]="toDos"></app-todo-list>
+            </ng-container>
+            <ng-template #allDone>
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <h4>All Done!! 🏖</h4>
+              </div>
+            </ng-template>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+      <mat-card></mat-card>
+      <mat-card></mat-card>
     </div>
+  </div>
 </div>
