@@ -1,3 +1,7 @@
 p {
   font-family: Lato;
 }
+
+.todo-container{
+  max-width: 100% !important;
+}

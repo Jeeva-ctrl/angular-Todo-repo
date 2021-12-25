@@ -17,7 +17,26 @@ import { ToDo } from '../../state/todo/todo.model';
   styleUrls: ['./todo-form.component.scss'],
 })
 export class TodoFormComponent implements OnDestroy, OnInit {
-  ngOnDestroy() {}
+  @Output() toDoChange = new EventEmitter<Partial<ToDo>>();
+  @Output() onAdd = new EventEmitter<void>();
+  task: FormControl;
 
-  ngOnInit() {}
+  private unSubscribe = new Subject<void>();
+
+  ngOnDestroy() {
+    this.unSubscribe.next();
+    this.unSubscribe.complete();
+  }
+
+  ngOnInit() {
+    this.task = new FormControl();
+    this.task.valueChanges
+      .pipe(debounceTime(200), takeUntil(this.unSubscribe))
+      .subscribe((value) => this.toDoChange.emit({ task: value }));
+  }
+
+  addToDo(){
+    this.task.setValue('');
+    this.onAdd.emit();
+  }
 }

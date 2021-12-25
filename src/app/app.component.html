@@ -1,6 +1,11 @@
-<div fxLayout="column" fxLayoutAlign="start stretch" class="cards">
+<div fxLayout="column" fxLayoutAlign="start stretch">
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="90%" fxFlex.md="66.667%" gxFlex.gt-md="50%">
+    <div
+      class="todo-container"
+      fxFlex="50%"
+      fxFlex.md="66.667%"
+      gxFlex.gt-md="66%"
+    >
       <mat-card>
         <mat-card-header>
           <mat-card-title><h2>To Do List</h2></mat-card-title>
@@ -26,10 +31,20 @@
           <mat-card-title>Add to Do</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <app-todo-form></app-todo-form>
+          <app-todo-form
+            (onAdd)="addToDo()"
+            (toDoChange)="onAddToDoChange($event)"
+          ></app-todo-form>
         </mat-card-content>
       </mat-card>
-      <mat-card></mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title><h2>Completed 🎉</h2></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+        <app-todo-list [toDos]="completeTodos | async" (toDoChange)="onIncompleteToDo($event)"></app-todo-list>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>
